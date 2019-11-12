@@ -7,8 +7,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BudgetTotalComponent } from './Budget-component/Total/budget-total.component';
 import { IncomeInsertComponent } from './Budget-component/Insert-income/income-insert.component';
-import { AllExpensesComponentComponent } from './Budget-component/all-expenses-component/all-expenses-component.component';
 import { AllExpensesComponent } from './Budget-component/all-expenses/all-expenses.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 
@@ -19,12 +19,12 @@ import { AllExpensesComponent } from './Budget-component/all-expenses/all-expens
     IncomeInsertComponent,
     DateComponent,
     AllIncomeComponent,
-    AllExpensesComponentComponent,
     AllExpensesComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

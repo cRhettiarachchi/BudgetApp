@@ -1,1 +1,20 @@
-<h1>This is the budget component</h1>
+<div id="total-section">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-sm">
+                <h1 class="total-date">{{ currentDate | date:'MMMM'}}</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <h2 class="total-amount total-div">Total</h2>
+            </div>
+            <div class="col-sm-6 total-amount-div">
+                <h2 class="total-amount">Rs. {{total}}</h2>
+            </div>
+        </div>
+
+    </div>
+
+</div>

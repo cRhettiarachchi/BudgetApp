@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 
+
 @Component({
   selector: 'app-budget-total',
   templateUrl: './budget-total.component.html',
@@ -7,4 +8,6 @@ import {Component} from '@angular/core';
 })
 export class BudgetTotalComponent {
 
+  currentDate = new Date();
+  total = 0;
 }
