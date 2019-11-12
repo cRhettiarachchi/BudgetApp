@@ -7,4 +7,14 @@ import {Component} from '@angular/core';
 })
 export class IncomeInsertComponent {
 
+  amount = 0;
+  disc = '';
+
+  update(value1: number, value2:string){
+    alert('update is called');
+    this.amount = value1;
+    this.disc = value2;
+
+    console.log(this.amount + " " + this.disc);
+  }
 }

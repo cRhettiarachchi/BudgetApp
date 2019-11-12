@@ -2,9 +2,9 @@ export class AllIncome {
 
     type: string;
     amount: number;
-    desc: stirng;
+    desc: string;
 
-    constructor(amount: float, desc: string){
+    constructor(amount: number, desc: string){
         this.type = "income";
         this.amount = amount;
         this.desc  = desc;

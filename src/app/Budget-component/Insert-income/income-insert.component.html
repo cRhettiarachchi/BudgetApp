@@ -8,13 +8,13 @@
                 </select>
             </div>
             <div class="col-md-4">
-                <input type="text" class="form-control" placeholder="Enter the value">
+                <input type="text" class="form-control" placeholder="Enter the value" #change1>
             </div>
             <div class="col-md-4">
-                <input type="text" class="form-control" placeholder="Enter the Description">
+                <input type="text" class="form-control" placeholder="Enter the Description" #change2>
             </div>
             <div class="col-md-2">
-                <button class="btn btn-primary click-button">Enter</button>
+                <a (click) = "update(change1.value, change2.value)" class = "btn btn-primary click-button">Enter</a>
 
             </div>
         </div>
