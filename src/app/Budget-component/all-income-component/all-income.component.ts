@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {AllIncome} from './all-income.component.module';
 
 @Component({
     selector: 'app-all-income',
@@ -7,4 +8,7 @@ import { Component } from '@angular/core';
 })
 export class AllIncomeComponent {
 
+    income: AllIncome[] = [
+        new AllIncome(1000.00, "new strings")
+    ];
 }
