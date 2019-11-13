@@ -8,8 +8,8 @@ import { AppComponent } from './app.component';
 import { BudgetTotalComponent } from './Budget-component/Total/budget-total.component';
 import { IncomeInsertComponent } from './Budget-component/Insert-income/income-insert.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { DisplayIncomeComponent } from './Budget-component/Insert-income/display-income/display-income.component';
-import { DisplayExpensesComponent } from './Budget-component/Insert-income/display-expenses/display-expenses.component';
+import { DisplaySectionComponent } from './Budget-component/display-section/display-section.component';
+import { ValueComponent } from './Budget-component/display-section/value/value.component';
 
 
 
@@ -19,8 +19,8 @@ import { DisplayExpensesComponent } from './Budget-component/Insert-income/displ
     BudgetTotalComponent,
     IncomeInsertComponent,
     DateComponent,
-    DisplayIncomeComponent,
-    DisplayExpensesComponent
+    DisplaySectionComponent,
+    ValueComponent,
   ],
   imports: [
     BrowserModule,
