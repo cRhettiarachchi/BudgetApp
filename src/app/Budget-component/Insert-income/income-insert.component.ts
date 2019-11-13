@@ -9,12 +9,16 @@ export class IncomeInsertComponent {
 
   amount = 0;
   disc = '';
+  type = '';
 
-  update(value1: number, value2:string){
+  update(value0: string, value1: number, value2: string) {
     alert('update is called');
     this.amount = value1;
     this.disc = value2;
+    this.type = value0;
 
-    console.log(this.amount + " " + this.disc);
+    if (this.type === 'income') {
+
+    }
   }
 }
