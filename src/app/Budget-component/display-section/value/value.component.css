@@ -1,21 +1,7 @@
-.income:after {
-  content:"";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 0.5em;
-  border-top: 1px solid #2ecc71;
-  z-index: -1;
+p{
+  border-bottom: 1px solid black;
 }
 
-.exp:before {
-  content:"";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 0.5em;
-  border-top: 1px solid #d35400;
-  z-index: -1;
+.para-div{
+  margin: 4% 0;
 }
