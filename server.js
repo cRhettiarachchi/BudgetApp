@@ -1,7 +1,8 @@
 const http = require('http');
+const app = require('./backend/budget');
 
-const server = http.createServer(((request, response) => {
-  response.end('this is the server running');
-}));
+app.set('port', 8080);
+const server = http.createServer(app);
 
-server.listen(3000);
+
+server.listen(8080);

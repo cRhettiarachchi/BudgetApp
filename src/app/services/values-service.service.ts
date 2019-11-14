@@ -1,19 +1,17 @@
 import { Injectable } from '@angular/core';
 import {BudgetModel} from '../Model/budget.model';
+import {Observable} from 'rxjs';
+import {HttpHeaders, HttpClient} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ValuesServiceService {
 
-  constructor() { }
+  getUrl = 'http://localhost:8080/get/values';
+  constructor(private http: HttpClient) { }
 
-  getAllvalues(){
-    return [
-      new BudgetModel(1, 1500.00, 'New Strings', 'expense'),
-      new BudgetModel(2, 2000.00, 'Classes', 'income'),
-      new BudgetModel(3, 2000.00, 'Classes', 'income'),
-      new BudgetModel(4, 1500.00, 'New Gear', 'expense')
-    ];
+  getAllvalues(): Observable<BudgetModel[]> {
+    return this.http.get<BudgetModel[]>(this.getUrl);
   }
 }
