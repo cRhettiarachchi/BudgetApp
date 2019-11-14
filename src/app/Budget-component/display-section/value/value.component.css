@@ -9,6 +9,7 @@ p{
 .btn-inc{
   border: 1px solid #3498db;
   background: #fff;
+  color: #3498db;
   padding: 2% 4%;
   border-radius: 4px;
 }
@@ -21,6 +22,7 @@ p{
 .btn-exp{
   border: 1px solid #c0392b;
   background: #fff;
+  color: #c0392b;
   padding: 2% 4%;
   border-radius: 4px;
 }
@@ -28,5 +30,9 @@ p{
 .btn-exp:hover{
   background: #c0392b;
   color: white;
+}
+
+.card-margin{
+  margin-bottom: 2%;
 }
 

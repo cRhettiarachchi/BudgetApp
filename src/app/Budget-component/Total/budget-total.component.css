@@ -1,10 +1,15 @@
 #total-section{
-    background: linear-gradient(90deg, rgba(215,214,247,1) 0%, rgba(231,231,240,1) 35%, rgba(223,244,249,1) 100%);
+    background-image: linear-gradient(90deg, rgba(215,214,247,1) 0%, rgba(231,231,240,1) 35%, rgba(223,244,249,1) 100%);
     height: 30vh;
     background-size: cover;
     background-position: center; /* Center the image */
     background-repeat: no-repeat;
     text-align: center;
+}
+
+h1, h2{
+  color: rgba(56, 65, 74, 0.68);
+
 }
 
 .total-date{
