@@ -1,11 +1,9 @@
-<div class="row content-inc-exp">
-  <div class="all-values" *ngFor="let value of allValues">
-    <div class="col-sm-6 income" *ngIf="value.type === 'income'">
-      <app-value [values]="value"></app-value>
+<div class="all-values" *ngFor="let value of allValues">
+  <div class="col-sm-6 income float-left" *ngIf="value.type === 'income'">
+    <app-value [values]="value"></app-value>
 
-    </div>
-    <div class="col-sm-6 exp" *ngIf="value.type === 'expense'">
-      <app-value [values]="value"></app-value>
-    </div>
+  </div>
+  <div class="col-sm-5 exp float-right" *ngIf="value.type === 'expense'">
+    <app-value [values]="value"></app-value>
   </div>
 </div>
