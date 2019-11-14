@@ -13,5 +13,14 @@ export class ValueComponent implements OnInit {
 
   ngOnInit() {
   }
+  selectClasses(type) {
+   let classes = {
+     btn: true,
+     'float-right': true,
+     'btn-inc': type === 'income',
+     'btn-exp': type === 'expense'
+   };
+   return classes;
+  }
 
 }

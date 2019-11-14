@@ -1,3 +1,7 @@
-<div class = "para-div">
-  <p *ngC>{{ values.description + '  ' +  values.amount + '  ' + values.id + '  ' + values.type }}</p>
+<div class="card w-75">
+  <div class="card-body">
+    <p class="card-text">{{ 'Rs. ' + values.amount }}</p>
+    <p class="card-text description">{{values.description}}</p>
+    <a href="#" [ngClass] = "selectClasses(values.type)">Button</a>
+  </div>
 </div>

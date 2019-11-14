@@ -1,7 +1,32 @@
 p{
-  border-bottom: 1px solid black;
+  display: inline;
 }
 
-.para-div{
-  margin: 4% 0;
+.description{
+  margin-left: 10%;
 }
+
+.btn-inc{
+  border: 1px solid #3498db;
+  background: #fff;
+  padding: 2% 4%;
+  border-radius: 4px;
+}
+
+.btn-inc:hover{
+  background: #3498db;
+  color: white;
+}
+
+.btn-exp{
+  border: 1px solid #c0392b;
+  background: #fff;
+  padding: 2% 4%;
+  border-radius: 4px;
+}
+
+.btn-exp:hover{
+  background: #c0392b;
+  color: white;
+}
+

@@ -1,19 +1,8 @@
-.income:after {
-  content:"";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 100%;
-  border-right: 1px solid #2ecc71;
-  z-index: -1;
-}
-
 .income{
-  padding-left: 16%;
   color: #3498db;
 }
 
 .exp{
   color: #c0392b;
 }
+
