@@ -7,9 +7,9 @@ import {ValuesServiceService} from '../../services/values-service.service';
   styleUrls: ['./income-insert.component.css']
 })
 export class IncomeInsertComponent {
-  constructor(public valueService: ValuesServiceService){}
+  constructor(public valueService: ValuesServiceService) { } // services dependency injection
 
-  update(value0: string, value1: number, value2: string) {
-    this.valueService.addValue(1, value1, value2, value0);
+  update(value0: string, value1: number, value2: string) {  // method to read all the values from the form
+    this.valueService.addValue(1, value1, value2, value0); // pass the values to the service
   }
 }

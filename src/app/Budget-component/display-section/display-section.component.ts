@@ -15,9 +15,7 @@ export class DisplaySectionComponent implements OnInit {
   constructor(private valueService: ValuesServiceService) { }
 
   ngOnInit() {
-    this.valueService.getAllvalues().subscribe(value => {
-      this.allValues = value;
-    });
+    this.valueService.getAllvalues();
 
     this.valueService.updateValues().subscribe(value => {
       this.allValues = value;
