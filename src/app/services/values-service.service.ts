@@ -12,6 +12,7 @@ export class ValuesServiceService {
   private subjectValue = new Subject<BudgetModel[]>(); // RXJS subject instantiation
 
   getUrl = 'http://localhost:8080/get/values'; // The url of the get Request
+  postUrl = 'http://localhost:8080/put/values';
   constructor(private http: HttpClient) { } // Http client dependency injection
 
   getAllvalues() { // method to get all the values
@@ -29,7 +30,11 @@ export class ValuesServiceService {
 
   addValue(id: number, amount: number, description: string, type: string) {
     const value: BudgetModel = new BudgetModel(id, amount, description, type);
-    this.moneyValues.push(value);
-    this.subjectValue.next([...this.moneyValues]);
+    console.log(value);
+    this.http.post<{message: string}>(this.postUrl, value).subscribe(message => {
+      console.log(message.message);
+      this.moneyValues.push(value);
+      this.subjectValue.next([...this.moneyValues]);
+    });
   }
 }
