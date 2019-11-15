@@ -1,9 +1,26 @@
-<div class="all-values" *ngFor="let value of allValues">
-  <div class="col-sm-6 income float-left" *ngIf="value.type === 'income'">
-    <app-value [values]="value"></app-value>
+<!--<div class="all-values" *ngFor="let value of allValues">-->
+<!--  <div [ngClass]="classes(value.type)">-->
+<!--    <app-value [values]="value"></app-value>-->
 
-  </div>
-  <div class="col-sm-6 exp float-right" *ngIf="value.type === 'expense'">
-    <app-value [values]="value"></app-value>
-  </div>
+<!--  </div>-->
+<!--&lt;!&ndash;  <div class="col-sm-6 exp float-right" *ngIf="value.type === 'expense'">&ndash;&gt;-->
+<!--&lt;!&ndash;    <app-value [values]="value"></app-value>&ndash;&gt;-->
+<!--&lt;!&ndash;  </div>&ndash;&gt;-->
+<!--</div>-->
+
+<div class="container">
+    <div class="income">
+      <div *ngFor="let value of allValues">
+        <div *ngIf="value.type === 'income'">
+          <app-value [values]="value"></app-value>
+        </div>
+      </div>
+    </div>
+    <div class="exp">
+      <div *ngFor="let value of allValues">
+        <div *ngIf="value.type === 'expense'">
+          <app-value [values]="value"></app-value>
+        </div>
+      </div>
+    </div>
 </div>

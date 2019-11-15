@@ -12,7 +12,9 @@ import {BudgetModel} from '../../Model/budget.model';
 export class DisplaySectionComponent implements OnInit {
 
   allValues: BudgetModel[];
-  constructor(private valueService: ValuesServiceService) { }
+
+  constructor(private valueService: ValuesServiceService) {
+  }
 
   ngOnInit() {
     this.valueService.getAllvalues();
@@ -22,5 +24,16 @@ export class DisplaySectionComponent implements OnInit {
     });
     // this.allValues = [new BudgetModel(1, 1000, 'game', 'expense')];
   }
+
+  classes(type: string) {
+    let classes = {
+      income: type === 'income',
+      exp: type === 'expense',
+      'float-left': type === 'income',
+      'float-right': type === 'expense'
+    };
+    return classes;
+  }
+
 
 }

@@ -1,8 +1,14 @@
 .income{
   color: #3498db;
+  width: 50%;
+  float: left;
+  display: inline;
 }
 
 .exp{
   color: #c0392b;
+  width: 50%;
+  float:right;
+  display: inline;
 }
 

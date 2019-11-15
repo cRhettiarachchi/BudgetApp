@@ -23,4 +23,15 @@ export class ValueComponent implements OnInit {
    return classes;
   }
 
+  classes(type: string) {
+    let classes = {
+      'card-body': true,
+      income: type === 'income',
+      exp: type === 'expense',
+      'float-left': type === 'income',
+      'float-right': type === 'expense'
+    };
+    return classes;
+  }
+
 }
