@@ -10,19 +10,19 @@ app.use("/get/values", (req, res, next) =>{
   let values = [
     {id: 1334,
     amount: 1000.00,
-    description: 'this is awesome',
+    description: 'income 1',
     type: 'income'},
     {id: 1334,
       amount: 1000.00,
-      description: 'this is awesome',
+      description: 'income 2',
       type: 'income'},
     {id: 1334,
       amount: 1000.00,
-      description: 'this is awesome',
+      description: 'exp 1',
       type: 'expense'},
     {id: 1334,
       amount: 1000.00,
-      description: 'this is awesome',
+      description: 'exp 2',
       type: 'expense'},
   ];
   res.status(200).json(values);

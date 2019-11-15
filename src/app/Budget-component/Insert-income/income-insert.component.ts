@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {ValuesServiceService} from '../../services/values-service.service';
 
 @Component({
   selector: 'app-insert-income',
@@ -6,19 +7,9 @@ import {Component} from '@angular/core';
   styleUrls: ['./income-insert.component.css']
 })
 export class IncomeInsertComponent {
-
-  amount = 0;
-  disc = '';
-  type = '';
+  constructor(public valueService: ValuesServiceService){}
 
   update(value0: string, value1: number, value2: string) {
-    alert('update is called');
-    this.amount = value1;
-    this.disc = value2;
-    this.type = value0;
-
-    if (this.type === 'income') {
-
-    }
+    this.valueService.addValue(1, value1, value2, value0);
   }
 }

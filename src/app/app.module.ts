@@ -11,6 +11,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DisplaySectionComponent } from './Budget-component/display-section/display-section.component';
 import { ValueComponent } from './Budget-component/display-section/value/value.component';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {FormsModule} from '@angular/forms';
 
 
 
@@ -28,6 +29,7 @@ import {HttpClient, HttpClientModule} from '@angular/common/http';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

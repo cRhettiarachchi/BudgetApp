@@ -18,6 +18,10 @@ export class DisplaySectionComponent implements OnInit {
     this.valueService.getAllvalues().subscribe(value => {
       this.allValues = value;
     });
+
+    this.valueService.updateValues().subscribe(value => {
+      this.allValues = value;
+    });
     // this.allValues = [new BudgetModel(1, 1000, 'game', 'expense')];
   }
 
