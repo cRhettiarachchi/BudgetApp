@@ -10,6 +10,6 @@ export class IncomeInsertComponent {
   constructor(public valueService: ValuesServiceService) { } // services dependency injection
 
   update(value0: string, value1: number, value2: string) {  // method to read all the values from the form
-    this.valueService.addValue(1, value1, value2, value0); // pass the values to the service
+    this.valueService.addValue(value1, value2, value0); // pass the values to the service
   }
 }

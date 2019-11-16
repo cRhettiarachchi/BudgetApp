@@ -28,8 +28,8 @@ export class ValuesServiceService {
     return this.subjectValue.asObservable();
   }
 
-  addValue(id: number, amount: number, description: string, type: string) {
-    const value: BudgetModel = new BudgetModel(id, amount, description, type);
+  addValue(amount: number, description: string, type: string) {
+    const value: BudgetModel = new BudgetModel(amount, description, type);
     console.log(value);
     this.http.post<{message: string}>(this.postUrl, value).subscribe(message => {
       console.log(message.message);
