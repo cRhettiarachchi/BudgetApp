@@ -1,20 +1,28 @@
 <div class="container">
-    <form class="enter-value">
+    <form class="enter-value" (submit)="update(inputData)" #inputData = "ngForm">
         <div class="form-row">
             <div class="col-md-2">
-                <select id="inputState" class="form-control" #change0>
+                <select id="inputState" class="form-control" name = "type" ngModel>
                     <option selected>income</option>
                     <option>expense</option>
                 </select>
             </div>
             <div class="col-md-4">
-                <input type="text" class="form-control" placeholder="Enter the value" #change1>
+                <input type="text" class="form-control" placeholder="Enter the value"
+                       name = "amount"
+                       ngModel
+                       required
+                      [ngClass]="invalid()">
             </div>
             <div class="col-md-4">
-                <input type="text" class="form-control" placeholder="Enter the Description" #change2>
+                <input type="text" class="form-control" placeholder="Enter the Description"
+                       name = "description"
+                       ngModel
+                       required
+                       [ngClass]="invalid()">
             </div>
             <div class="col-md-2">
-                <a (click) = "update(change0.value, change1.value, change2.value)" class = "btn btn-primary click-button">Enter</a>
+                <button type = "submit" class = "btn btn-primary click-button">Enter</button>
 
             </div>
         </div>

@@ -46,8 +46,8 @@ export class ValuesServiceService {
   addValue(amount: number, description: string, type: string) {
     const value: BudgetModel = new BudgetModel(amount, description, type);
     console.log(value);
-    this.http.post<{message: string}>(this.postUrl, value).subscribe(message => {
-      console.log(message.message);
+    this.http.post<{message: string, id: string}>(this.postUrl, value).subscribe(response => {
+      value.id = response.id;
       this.moneyValues.push(value);
       this.subjectValue.next([...this.moneyValues]);
     });

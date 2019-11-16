@@ -29,10 +29,13 @@ app.post('/put/values', (req, res, next) =>{
     description: req.body.description,
     type: req.body.type
   });
-  budgetValue.save();
-  res.status(201).json({
-    message: 'successfully added'
+  budgetValue.save().then((valuesEntered) =>{
+    res.status(201).json({
+      message: 'successfully added',
+      id: valuesEntered._id
+    });
   });
+
 });
 
 // K7ulBusW5xqve3y0

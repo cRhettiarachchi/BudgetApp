@@ -10,8 +10,9 @@ import { IncomeInsertComponent } from './Budget-component/Insert-income/income-i
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DisplaySectionComponent } from './Budget-component/display-section/display-section.component';
 import { ValueComponent } from './Budget-component/display-section/value/value.component';
-import {HttpClient, HttpClientModule} from '@angular/common/http';
+import { HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
+import {CommonModule} from '@angular/common';
 
 
 
@@ -29,7 +30,8 @@ import {FormsModule} from '@angular/forms';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    CommonModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
