@@ -27,7 +27,7 @@ app.post('/put/values', (req, res, next) =>{
   let budgetValue = new BudgetModel({
     amount: req.body.amount,
     description: req.body.description,
-    type: req.body.type
+    type: req.body.type,
   });
   budgetValue.save().then((valuesEntered) =>{
     res.status(201).json({
