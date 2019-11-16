@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import {BudgetModel} from '../../../Model/budget.model';
+import {ValuesServiceService} from '../../../services/values-service.service';
 
 @Component({
   selector: 'app-value',
@@ -9,7 +10,7 @@ import {BudgetModel} from '../../../Model/budget.model';
 export class ValueComponent implements OnInit {
 
   @Input() values: BudgetModel;
-  constructor() { }
+  constructor(private valueService: ValuesServiceService) { }
 
   ngOnInit() {
   }
@@ -21,6 +22,10 @@ export class ValueComponent implements OnInit {
      'btn-exp': type === 'expense'
    };
    return classes;
+  }
+  deleteValue(id: string) {
+    console.log('value component working');
+    this.valueService.deleteValue(id);
   }
 
 }

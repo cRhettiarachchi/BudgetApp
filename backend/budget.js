@@ -13,6 +13,7 @@ mongoose.connect("mongodb+srv://Charith:K7ulBusW5xqve3y0@cluster0-ow00d.mongodb.
 
 app.use(bodyParser.json());
 
+// To allow cors for connections
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header('Access-Control-Allow-Headers', '*');
@@ -20,7 +21,7 @@ app.use(function(req, res, next) {
   next();
 });
 
-
+// The Post request to get data from angular
 app.post('/put/values', (req, res, next) =>{
   // let budgetValue = req.body;
   let budgetValue = new BudgetModel({
@@ -35,12 +36,21 @@ app.post('/put/values', (req, res, next) =>{
 });
 
 // K7ulBusW5xqve3y0
-
+// Get to get the values to the front end
 app.get("/get/values", (req, res, next) =>{
   BudgetModel.find()
     .then((documents) =>{
       res.status(200).json(documents);
     })
+
+});
+
+//Delete method to delete values
+app.delete('/delete/value/:id', (req, res, next) => {
+  BudgetModel.deleteOne({_id: req.params.id}).then((result) => {
+    console.log(result);
+    res.status(200).json({message: 'upload successful'});
+  });
 
 });
 
