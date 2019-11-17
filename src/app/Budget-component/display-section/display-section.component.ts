@@ -11,7 +11,7 @@ import {BudgetModel} from '../../Model/budget.model';
 })
 export class DisplaySectionComponent implements OnInit {
 
-  allValues: BudgetModel[];
+  allValues: BudgetModel[] = [];
 
   constructor(private valueService: ValuesServiceService) {
   }

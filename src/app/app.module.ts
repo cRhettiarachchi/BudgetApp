@@ -13,6 +13,7 @@ import { ValueComponent } from './Budget-component/display-section/value/value.c
 import { HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
 import {CommonModule} from '@angular/common';
+import { WelcomeComponent } from './Budget-component/welcome/welcome.component';
 
 
 
@@ -24,6 +25,7 @@ import {CommonModule} from '@angular/common';
     DateComponent,
     DisplaySectionComponent,
     ValueComponent,
+    WelcomeComponent,
   ],
   imports: [
     BrowserModule,
