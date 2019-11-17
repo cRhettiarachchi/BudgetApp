@@ -1,7 +1,7 @@
 <div class="card w-75 card-margin">
   <div class = "card-body">
-    <p class="card-text">{{ 'Rs. ' + values.amount }}</p>
-    <p class="card-text description">{{values.description}}</p>
+    <p class="card-text float-left">{{ 'Rs. ' + values.amount }}</p>
+    <p class="card-text float-left description">{{values.description}}</p>
     <a [ngClass] = "selectClasses(values.type)" (click) = "deleteValue(values.id)">Delete</a>
   </div>
 </div>
