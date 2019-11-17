@@ -8,7 +8,8 @@ import {NgForm} from '@angular/forms';
   styleUrls: ['./income-insert.component.css']
 })
 export class IncomeInsertComponent {
-  formValid= true;
+  formValid = true;
+  total = 0;
   constructor(public valueService: ValuesServiceService) { } // services dependency injection
 
   update(form: NgForm) {  // method to read all the values from the form
@@ -16,7 +17,7 @@ export class IncomeInsertComponent {
       this.formValid = false;
       return false;
     }
-
+    this.valueService.updateTotal(1, form.value.amount, form.value.type);
     this.valueService.addValue(form.value.amount, form.value.description, form.value.type); // pass the values to the service
   }
 

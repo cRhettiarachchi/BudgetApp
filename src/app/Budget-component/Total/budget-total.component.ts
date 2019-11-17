@@ -1,4 +1,5 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {ValuesServiceService} from '../../services/values-service.service';
 
 
 @Component({
@@ -6,8 +7,17 @@ import {Component} from '@angular/core';
   templateUrl: './budget-total.component.html',
   styleUrls: ['./budget-total.component.css']
 })
-export class BudgetTotalComponent {
+export class BudgetTotalComponent implements OnInit {
 
   currentDate = new Date();
-  total = 0;
+  total: number;
+  constructor(private valueService: ValuesServiceService) {}
+  ngOnInit() {
+    console.log('onInit works in total');
+    this.valueService.getTotal();
+    this.valueService.retrieveTotal().subscribe((total) => {
+      console.log(this.total);
+      this.total = total;
+    });
+  }
 }

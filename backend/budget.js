@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const app = express();
 const mongoose = require('mongoose');
 const BudgetModel = require('./budgetvalue/budget');
+const Total = require('./budgetvalue/total');
 
 mongoose.connect("mongodb+srv://Charith:K7ulBusW5xqve3y0@cluster0-ow00d.mongodb.net/BudgetDB?retryWrites=true&w=majority", {useNewUrlParser: true,  useUnifiedTopology: true})
   .then(() => {
@@ -36,6 +37,13 @@ app.post('/put/values', (req, res, next) =>{
     });
   });
 
+});
+
+app.get('/total', (req, res, next) =>{
+  Total.find().then((total)=>{
+    console.log('total get method called');
+    res.status(200).json(total);
+  })
 });
 
 // K7ulBusW5xqve3y0

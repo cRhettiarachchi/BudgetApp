@@ -11,12 +11,15 @@ import { map } from 'rxjs/operators';
 export class ValuesServiceService {
 
   private moneyValues: BudgetModel[] = []; // the all values array
+  private total = 0;
   private subjectValue = new Subject<BudgetModel[]>(); // RXJS subject instantiation
+  private subjectTotal = new Subject<number>();
 
 
   getUrl = 'http://localhost:8080/get/values'; // The url of the get Request
   postUrl = 'http://localhost:8080/put/values';
   deleteUrl = 'http://localhost:8080/delete/value/';
+  getTotalUrl = 'http://localhost:8080/total';
   constructor(private http: HttpClient) { } // Http client dependency injection
 
   getAllvalues() { // method to get all the values
@@ -43,6 +46,10 @@ export class ValuesServiceService {
     return this.subjectValue.asObservable();
   }
 
+  retrieveTotal(): Observable<number>{
+    return this.subjectTotal.asObservable();
+  }
+
   addValue(amount: number, description: string, type: string) {
     const value: BudgetModel = new BudgetModel(amount, description, type);
     console.log(value);
@@ -51,6 +58,26 @@ export class ValuesServiceService {
       this.moneyValues.push(value);
       this.subjectValue.next([...this.moneyValues]);
     });
+  }
+
+  getTotal() {
+    let total: number;
+    // this.http.get<{ total: number }>(this.getTotalUrl).subscribe(response => {
+    //   total = response.total;
+    // });
+    this.subjectTotal.next(this.total);
+  }
+  updateTotal(id: number, tot: number, type: string) {
+    if (type === 'income') {
+      this.total = (+this.total) + (+tot);
+      console.log('after the if condition ' + typeof(this.total));
+    } else {
+      this.total -= tot;
+      console.log('after the if condition ' + typeof(this.total));
+    }
+    // this.total = type === 'income' ? this.total + total : this.total - total;
+    console.log(this.total);
+    this.subjectTotal.next(this.total);
   }
 
   deleteValue(id: string) {
