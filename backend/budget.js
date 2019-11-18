@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const app = express();
 const mongoose = require('mongoose');
 const budgetRouter = require('./routes/valueRoutes');
+const TotalRouter = require('./routes/totalRoutes');
 
 mongoose.connect("mongodb+srv://Charith:K7ulBusW5xqve3y0@cluster0-ow00d.mongodb.net/BudgetDB?retryWrites=true&w=majority", {useNewUrlParser: true,  useUnifiedTopology: true})
   .then(() => {
@@ -22,4 +23,5 @@ app.use(function(req, res, next) {
 });
 
 app.use(budgetRouter);
+app.use(TotalRouter);
 module.exports = app;

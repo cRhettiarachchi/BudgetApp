@@ -17,7 +17,7 @@ export class IncomeInsertComponent {
       this.formValid = false;
       return false;
     }
-    this.valueService.updateTotal(1, form.value.amount, form.value.type);
+    this.valueService.updateTotal(form.value.amount, form.value.type);
     this.valueService.addValue(form.value.amount, form.value.description, form.value.type); // pass the values to the service
   }
 

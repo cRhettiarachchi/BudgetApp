@@ -18,13 +18,6 @@ router.post('/put/values', (req, res, next) =>{
   });
 });
 
-router.get('/total', (req, res, next) =>{
-  Total.find().then((total)=>{
-    console.log('total get method called');
-    res.status(200).json(total);
-  })
-});
-
 // K7ulBusW5xqve3y0
 // Get to get the values to the front end
 router.get("/get/values", (req, res, next) =>{

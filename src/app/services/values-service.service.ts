@@ -3,6 +3,7 @@ import {BudgetModel} from '../Model/budget.model';
 import {Observable, Subject} from 'rxjs';
 import {HttpHeaders, HttpClient} from '@angular/common/http';
 import { map } from 'rxjs/operators';
+import {TotalModel} from '../Model/total.model';
 
 
 @Injectable({
@@ -11,21 +12,22 @@ import { map } from 'rxjs/operators';
 export class ValuesServiceService {
 
   private moneyValues: BudgetModel[] = []; // the all values array
-  private total = 0;
+  private total;
   private subjectValue = new Subject<BudgetModel[]>(); // RXJS subject instantiation
-  private subjectTotal = new Subject<number>();
+  private subjectTotal = new Subject<TotalModel>();
+  private totId = '5dd2b6c0050a10465cc8ef52';
 
 
   getUrl = 'http://localhost:8080/get/values'; // The url of the get Request
   postUrl = 'http://localhost:8080/put/values';
   deleteUrl = 'http://localhost:8080/delete/value/';
-  getTotalUrl = 'http://localhost:8080/total';
+  getTotalUrl = 'http://localhost:8080/total/get';
   constructor(private http: HttpClient) { } // Http client dependency injection
 
   getAllvalues() { // method to get all the values
     // calling the get from the url
     this.http.get<any[]>(this.getUrl)
-      .pipe(map((values) =>{
+      .pipe(map((values) => {
         return values.map(value => {
           return {
             id: value._id,
@@ -39,14 +41,32 @@ export class ValuesServiceService {
       this.moneyValues = value;
       this.subjectValue.next([...this.moneyValues]); // call the observable
     });
-
   }
+  getTotal() {
+    this.http.get<any>(this.getTotalUrl)
+      .subscribe(value => {
+        this.total = value;
+        console.log('this is values ' + this.total);
+        this.subjectTotal.next(...this.total);
+      });
+    // this.http.get<{ total: number }>(this.getTotalUrl).subscribe(response => {
+    //   total = response.total;
+    // });
+  }
+
+  // addTotal(){
+  //   const tot: TotalModel = {_id: 1, total: 0};
+  //   this.http.post<{message: string, id: number}>('http://localhost:8080/total/post', tot)
+  //     .subscribe( response => {
+  //       console.log('this is add total id is ' + response.id );
+  //     });
+  // }
 
   updateValues(): Observable<BudgetModel[]> {
     return this.subjectValue.asObservable();
   }
 
-  retrieveTotal(): Observable<number>{
+  retrieveTotal(): Observable<TotalModel> {
     return this.subjectTotal.asObservable();
   }
 
@@ -59,25 +79,19 @@ export class ValuesServiceService {
       this.subjectValue.next([...this.moneyValues]);
     });
   }
-
-  getTotal() {
-    let total: number;
-    // this.http.get<{ total: number }>(this.getTotalUrl).subscribe(response => {
-    //   total = response.total;
-    // });
-    this.subjectTotal.next(this.total);
-  }
-  updateTotal(id: number, tot: number, type: string) {
+  updateTotal(tot: number, type: string) {
     if (type === 'income') {
-      this.total = (+this.total) + (+tot);
+      this.total.total = (+this.total) + (+tot);
       console.log('after the if condition ' + typeof(this.total));
     } else {
-      this.total -= tot;
+      this.total.total -= tot;
       console.log('after the if condition ' + typeof(this.total));
     }
+    this.http.put<{ message: string }>('http://localhost:8080/total/put' + this.totId, this.total).subscribe(msg => {
+      console.log(msg.message);
+      this.subjectTotal.next(this.total);
+    });
     // this.total = type === 'income' ? this.total + total : this.total - total;
-    console.log(this.total);
-    this.subjectTotal.next(this.total);
   }
 
   deleteValue(id: string) {
