@@ -5,4 +5,4 @@ const schema = mongoose.Schema({
   _id: {type: Number, default: 1}
 });
 
-module.exports = mongoose.model('Total', schema);
+module.exports = mongoose.model('TotalModel', schema);

@@ -2,8 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
 const mongoose = require('mongoose');
-const BudgetModel = require('./budgetvalue/budget');
-const Total = require('./budgetvalue/total');
+const budgetRouter = require('./routes/valueRoutes');
 
 mongoose.connect("mongodb+srv://Charith:K7ulBusW5xqve3y0@cluster0-ow00d.mongodb.net/BudgetDB?retryWrites=true&w=majority", {useNewUrlParser: true,  useUnifiedTopology: true})
   .then(() => {
@@ -22,47 +21,5 @@ app.use(function(req, res, next) {
   next();
 });
 
-// The Post request to get data from angular
-app.post('/put/values', (req, res, next) =>{
-  // let budgetValue = req.body;
-  let budgetValue = new BudgetModel({
-    amount: req.body.amount,
-    description: req.body.description,
-    type: req.body.type,
-  });
-  budgetValue.save().then((valuesEntered) =>{
-    res.status(201).json({
-      message: 'successfully added',
-      id: valuesEntered._id
-    });
-  });
-
-});
-
-app.get('/total', (req, res, next) =>{
-  Total.find().then((total)=>{
-    console.log('total get method called');
-    res.status(200).json(total);
-  })
-});
-
-// K7ulBusW5xqve3y0
-// Get to get the values to the front end
-app.get("/get/values", (req, res, next) =>{
-  BudgetModel.find()
-    .then((documents) =>{
-      res.status(200).json(documents);
-    })
-
-});
-
-//Delete method to delete values
-app.delete('/delete/value/:id', (req, res, next) => {
-  BudgetModel.deleteOne({_id: req.params.id}).then((result) => {
-    console.log(result);
-    res.status(200).json({message: 'upload successful'});
-  });
-
-});
-
+app.use(budgetRouter);
 module.exports = app;
