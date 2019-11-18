@@ -11,7 +11,7 @@ import {TotalModel} from '../../Model/total.model';
 export class BudgetTotalComponent implements OnInit {
 
   currentDate = new Date();
-  total: TotalModel;
+  total: TotalModel = new TotalModel(0);
   id = '5dd2b6c0050a10465cc8ef52';
   constructor(private valueService: ValuesServiceService) {}
   ngOnInit() {

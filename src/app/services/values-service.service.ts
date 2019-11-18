@@ -12,7 +12,7 @@ import {TotalModel} from '../Model/total.model';
 export class ValuesServiceService {
 
   private moneyValues: BudgetModel[] = []; // the all values array
-  private total;
+  private total: TotalModel;
   private subjectValue = new Subject<BudgetModel[]>(); // RXJS subject instantiation
   private subjectTotal = new Subject<TotalModel>();
   private totId = '5dd2b6c0050a10465cc8ef52';
@@ -21,7 +21,7 @@ export class ValuesServiceService {
   getUrl = 'http://localhost:8080/get/values'; // The url of the get Request
   postUrl = 'http://localhost:8080/put/values';
   deleteUrl = 'http://localhost:8080/delete/value/';
-  getTotalUrl = 'http://localhost:8080/total/get';
+  getTotalUrl = 'http://localhost:8080/total/get/';
   constructor(private http: HttpClient) { } // Http client dependency injection
 
   getAllvalues() { // method to get all the values
@@ -43,24 +43,16 @@ export class ValuesServiceService {
     });
   }
   getTotal() {
-    this.http.get<any>(this.getTotalUrl)
+    this.http.get<any>(this.getTotalUrl + this.totId)
       .subscribe(value => {
         this.total = value;
         console.log('this is values ' + this.total);
-        this.subjectTotal.next(...this.total);
+        this.subjectTotal.next({...this.total});
       });
     // this.http.get<{ total: number }>(this.getTotalUrl).subscribe(response => {
     //   total = response.total;
     // });
   }
-
-  // addTotal(){
-  //   const tot: TotalModel = {_id: 1, total: 0};
-  //   this.http.post<{message: string, id: number}>('http://localhost:8080/total/post', tot)
-  //     .subscribe( response => {
-  //       console.log('this is add total id is ' + response.id );
-  //     });
-  // }
 
   updateValues(): Observable<BudgetModel[]> {
     return this.subjectValue.asObservable();
@@ -87,7 +79,7 @@ export class ValuesServiceService {
       this.total.total -= tot;
       console.log('after the if condition ' + typeof(this.total));
     }
-    this.http.put<{ message: string }>('http://localhost:8080/total/put' + this.totId, this.total).subscribe(msg => {
+    this.http.patch<{ message: string }>('http://localhost:8080/total/put/' + this.totId, this.total).subscribe(msg => {
       console.log(msg.message);
       this.subjectTotal.next(this.total);
     });

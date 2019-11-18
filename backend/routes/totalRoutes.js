@@ -17,21 +17,25 @@ routes.post('/total/post', (req, res, next) =>{
   });
 });
 
-routes.get('/total/get', (req, res, next) => {
-    Total.find().then((total)=>{
+routes.get('/total/get/:id', (req, res, next) => {
+  console.log('the get total method called and id is : ' + req.params.id);
+    Total.findOne({_id: req.params.id}).then((total)=>{
       console.log('total get method called ' + total.total);
       res.status(200).json(total);
     })
 });
 
-routes.put('/total/put/:id', (req, res, next) => {
+routes.patch('/total/put/:id', (req, res, next) => {
+
   const tot = new Total({
     total: req.body.total
   });
-  Total.updateOne({_id: req.params.id}, tot).then(value => {
+  Total.updateOne({_id: req.params.id}, {total: req.body.total}).then(value => {
     res.json({
       message: 'update Done'
     });
+  }).catch(message => {
+    console.log(message);
   })
 });
 
