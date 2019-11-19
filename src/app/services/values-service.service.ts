@@ -73,11 +73,10 @@ export class ValuesServiceService {
   }
   updateTotal(tot: number, type: string) {
     if (type === 'income') {
-      this.total.total = (+this.total) + (+tot);
+      this.total.total = (+this.total.total) + (+tot);
       console.log('after the if condition ' + typeof(this.total));
     } else {
       this.total.total -= tot;
-      console.log('after the if condition ' + typeof(this.total));
     }
     this.http.patch<{ message: string }>('http://localhost:8080/total/put/' + this.totId, this.total).subscribe(msg => {
       console.log(msg.message);
@@ -91,6 +90,19 @@ export class ValuesServiceService {
       const updatedValues = this.moneyValues.filter(value => value.id !== id);
       this.moneyValues = updatedValues;
       this.subjectValue.next([...this.moneyValues]);
+    });
+    this.deleteTotal(id);
+  }
+
+  deleteTotal(id: string){
+    if(this.moneyValues.find(p => p.id === id).type === 'income') {
+      this.total.total -= this.moneyValues.find(p => p.id === id).amount;
+    } else {
+      this.total.total = (+this.total.total) + (+this.moneyValues.find(p => p.id === id).amount);
+    }
+    this.http.patch<{ message: string }>('http://localhost:8080/total/put/' + this.totId, this.total).subscribe(msg => {
+      console.log(msg.message);
+      this.subjectTotal.next(this.total);
     });
   }
 }
